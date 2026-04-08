@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d1810 100%);
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Símbolo de Konoha no fundo */
+.konoha-symbol {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.konoha-symbol::before {
+    content: '木ノ葉';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    color: rgba(255,107,0,0.08);
+    font-weight: 900;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(180deg, #ff6b00 0%, #ff9500 50%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.video-container {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 3px solid #ff6b00;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 
+        0 0 20px rgba(255,107,0,0.3),
+        inset 0 0 20px rgba(0,0,0,0.5);
+    transition: all 0.5s ease;
+}
+
+.video-container.shrink {
+    flex: 0 0 50%;
+}
+
+.video-frame {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(255,107,0,0.5);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.video-container img,
+.video-container video {
+    width: 100%;
+    max-width: 640px;
+    border-radius: 8px;
+    display: block;
+}
+
+#mobileVideo {
+    transform: scaleX(-1); /* Espelha para parecer selfie */
+}
+
+.chakra-bar {
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.chakra-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00bfff, #1e90ff, #00bfff);
+    width: 100%;
+    animation: chakraFlow 2s ease-in-out infinite;
+}
+
+@keyframes chakraFlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.video-label {
+    text-align: center;
+    margin-top: 10px;
+    color: #ff9500;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.detection-card {
+    background: linear-gradient(145deg, #ff6b00 0%, #ff4500 100%);
+    border: 3px solid #ffb347;
+    border-radius: 15px;
+    padding: 30px;
+    min-width: 320px;
+    box-shadow: 
+        0 0 30px rgba(255,107,0,0.5),
+        0 10px 40px rgba(0,0,0,0.5);
+    text-align: center;
+    animation: jutsuActivate 0.5s ease;
+    display: none;
+}
+
+.detection-card.show {
+    display: block;
+}
+
+@keyframes jutsuActivate {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+    }
+    50% {
+        transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.seal-detected h2 {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.seal-symbol {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.5);
+    margin: 10px 0;
+}
+
+.class-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 15px 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.japanese-name {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+}
+
+.confidence {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #ffeb3b, #fff);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.reset-btn {
+    margin-top: 25px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: rgba(0,0,0,0.3);
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reset-btn:hover {
+    background: #fff;
+    color: #ff6b00;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(145deg, rgba(26,26,26,0.9), rgba(42,42,42,0.9));
+    border: 2px solid #ff6b00;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,107,0,0.2);
+}
+
+.instructions h3 {
+    color: #ff9500;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.instructions > p {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.seals-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+    .seals-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .seals-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.seal-item {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 15px 10px;
+    transition: all 0.3s ease;
+}
+
+.seal-item:hover {
+    border-color: #ff6b00;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+}
+
+.seal-kanji {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ff9500;
+    margin-bottom: 5px;
+}
+
+.seal-name {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #666;
+    border-top: 1px solid #333;
+}
+
+.footer p {
+    letter-spacing: 1px;
+}
+
+/* Efeito de pergaminho nos cantos */
+.container::before,
+.container::after {
+    content: '忍';
+    position: fixed;
+    font-size: 3rem;
+    color: rgba(255,107,0,0.1);
+    font-weight: 900;
+}
+
+.container::before {
+    top: 20px;
+    left: 20px;
+}
+
+.container::after {
+    bottom: 20px;
+    right: 20px;
+}
+
+.zodiac-icon {
+    padding: 8px 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}

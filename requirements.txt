@@ -1,2 +1,4 @@
 Pillow
 ultralytics
+flask
+opencv-python

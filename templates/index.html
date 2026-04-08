@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto - Detector de Selos de Ninjutsu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Ninja+Naruto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="konoha-symbol"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>忍術 NINJUTSU HAND SEALS 忍術</h1>
+            <p class="subtitle">Detector de Selos - Academia Ninja de Konoha</p>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="video-container" id="videoContainer">
+                <div class="video-frame">
+                    <!-- Modo Desktop: Webcam do servidor -->
+                    <img id="serverVideo" src="{{ url_for('video_feed') }}" alt="Camera Feed" style="display: none;">
+                    <!-- Modo Mobile: Câmera do celular -->
+                    <video id="mobileVideo" autoplay playsinline muted style="display: none;"></video>
+                    <canvas id="captureCanvas" style="display: none;"></canvas>
+                </div>
+                <div class="chakra-bar">
+                    <div class="chakra-fill" id="chakraFill"></div>
+                </div>
+                <p class="video-label" id="videoLabel">🔥 Faça o selo com suas mãos 🔥</p>
+            </div>
+            
+            <div class="detection-card" id="detectionCard">
+                <div class="seal-detected">
+                    <h2>✨ SELO IDENTIFICADO ✨</h2>
+                    <div class="seal-symbol" id="sealSymbol">印</div>
+                    <div class="class-name" id="className">-</div>
+                    <div class="japanese-name" id="japaneseName"></div>
+                </div>
+                <div class="confidence" id="confidenceText">Chakra: 0%</div>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+                </div>
+                <button class="reset-btn" onclick="resetDetection()">
+                    <span class="btn-icon">🌀</span> Próximo Jutsu
+                </button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📜 Os 12 Selos de Mão do Ninjutsu 📜</h3>
+            <p>Baseados nos 12 signos do zodíaco chinês</p>
+            <div class="seals-grid">
+                <div class="seal-item">
+                    <span class="seal-kanji">子</span>
+                    <span class="seal-name">Rat (Ne)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">丑</span>
+                    <span class="seal-name">Ox (Ushi)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">寅</span>
+                    <span class="seal-name">Tiger (Tora)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">卯</span>
+                    <span class="seal-name">Hare (U)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">辰</span>
+                    <span class="seal-name">Dragon (Tatsu)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">巳</span>
+                    <span class="seal-name">Serpent (Mi)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">午</span>
+                    <span class="seal-name">Horse (Uma)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">未</span>
+                    <span class="seal-name">Ram (Hitsuji)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">申</span>
+                    <span class="seal-name">Monkey (Saru)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">酉</span>
+                    <span class="seal-name">Bird (Tori)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">戌</span>
+                    <span class="seal-name">Dog (Inu)</span>
+                </div>
+                <div class="seal-item">
+                    <span class="seal-kanji">亥</span>
+                    <span class="seal-name">Boar (I)</span>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>🍥 Academia Ninja de Konoha - Treinamento de Selos 🍥</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
